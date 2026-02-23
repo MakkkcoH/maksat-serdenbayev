@@ -3,13 +3,10 @@
 ## 1. Project Overview
 
 **Project Name:**  
-(write your project name)
+Investment calculator
 
 **What does your calculator do?**  
-(Explain in 2–3 sentences what problem you are solving and what you calculate.)
-
-Example:  
-This calculator calculates Body Mass Index (BMI) using weight and height. It also classifies the result into health categories.
+This calculator estimates how much money a user can accumulate over time by making monthly cotributions with a fixed annual interest rate. It simulates compound interest growth and shows the final amount after a selected number of years. 
 
 ---
 
@@ -19,27 +16,33 @@ List and explain all inputs you used.
 
 | Input Name | Unit | What it Represents |
 |---|---|---|
-| Example: Weight | kg | User body weight |
-| Example: Height | cm | User height |
+| Name | txt | User's name for personalized output |
+| Monthly Contribution | USD ($) | Amount of money depozited every month |
+| Interest rate | % per year | Annual interest rate applied to the savings |
+| Period | Years | Total investment duration |
 
 Explain in words:  
-(Why did you choose these inputs? Why are they important?)
+These inputs were chosen because they represent the main and basic factors that affect saving growth: how much money is added regularly, how long the money stays invested and the interest rate.The user name was included to make the result more personalized and user-friendly.
 
 ---
 
 ## 3. Process (Calculation Logic)
 
 **Formula or Calculation Used:**  
-(Write your formula or explain how calculation works.)
+The calculator uses compound interest applied monthly.
 
-Example:  
-BMI = weight / (height in meters)^2
+Monthly rate = annual rate / 12 
+Total is updated every month using:
+
+total = (total + monthlyPayment)×(1 + monthlyRate)
 
 **Steps:**
 1. Get input values from HTML  
-2. Convert values if needed (example: cm → meters)  
-3. Perform calculation  
-4. Store result in variable  
+2. Convert text inputs into numbers using JavaScript  
+3. Convert annual interest rate into monthly rate 
+4. Loop through each month of the investment period
+5. Add the monthly contribution and apply interest
+6. Store the final result in a variable  
 
 ---
 
@@ -47,13 +50,12 @@ BMI = weight / (height in meters)^2
 
 Explain how your program interprets the result.
 
-Example:
+I do not have any ranges, but the program checks input validty before performing calculations.
 
-If BMI < 18.5 → Underweight  
-If BMI 18.5 – 24.9 → Normal  
-If BMI ≥ 25 → Overweight  
-
-Explain why you chose these ranges (if using real model, mention it).
+Conditions used: 
+if any field is empty, then show error message
+if numbers are negative, then show validation message 
+Otherwise, perform calculation and show the result 
 
 ---
 
@@ -61,10 +63,9 @@ Explain why you chose these ranges (if using real model, mention it).
 
 What does your program show to the user?
 
-- Calculated value  
-- Category or interpretation  
-- Personalized message (if used)  
-- Optional: binary output (if implemented)
+- Final calculated savings amount 
+- Personalized message with the user's name  
+- Formatted currency value with commas for readability
 
 ---
 
@@ -72,47 +73,54 @@ What does your program show to the user?
 
 What happens if:
 
-- User enters zero?  
-- User enters negative number?  
-- User leaves input empty?  
+- User enters zero?
+  The problem calculates normally. Result will be zero or minimal growth depending on inputs.
+  
+- User enters negative number?
+  The program stops calculation and displays an error message saying values cannot be negative.
+  
+- User leaves input empty?
+  The program displays a message asking the user to fill all fields correctly.
 
-Explain how your program handles this.
+This validation prevents unrealistic and broken calculations. 
 
 ---
 
 ## 7. Optional Features (If You Added Any)
 
-Examples:
-- Binary conversion  
-- Extra calculations  
-- Extra UI features  
-- Validation messages  
+
+- Personalized output
+- Currency formatting   
 
 ---
 
 ## 8. How to Run the Project
 
-1. Download or clone repository  
+1. Download or clone the project files 
 2. Open `index.html` in browser  
 3. Enter input values  
-4. Click calculate button  
+4. Click calculate button
+5. View the result 
 
 ---
 
 ## 9. AI Usage (If Used)
 
 Did you use AI tools?  
-(Yes / No)
+Yes
 
-If yes, explain briefly:
-- What you asked AI for  
-- What you modified yourself  
-- What you fully understand now  
+- What you asked AI for
+  To write a code and explain each line
+  
+- What you modified yourself
+  Some features I want to see in the calculator
+  
+- What you fully understand now
+  Simple syntax of html, css, javascript. How we run the program, how we should save and open it.
 
 ---
 
 ## 10. Reflection
 
 What did you learn from this assignment?
-
-(2–4 sentences)
+I have learned that these 3 languages works together. That AI is a strong tool, which can easily handle with such problems, and ignore it completely is a big mistake, but I must remember about the understanding. The interesting fact: I thought I found a mistake in AI's explanation when it came to formula, I could not see any degrees, which are used in complex percents, but then I found out that the formula is replaced with simple calculations in a loop (permanent iterations).
